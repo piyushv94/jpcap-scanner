@@ -2,13 +2,13 @@ import java.io.IOException;
 
 import jpcap.*;
 import jpcap.packet.*;
-public class Devices {
+public class Devices {//choose a interface to use
 	NetworkInterface devices;
-	Devices()
+	Devices()//default constructor
 	{
 		
 	}
-	public void showDevices()
+	public void showDevices()//show the interface list and choose one of them
 	{
 		NetworkInterface[] _devices=JpcapCaptor.getDeviceList();
 		for(int i=0;i<_devices.length;i++)
@@ -34,7 +34,7 @@ public class Devices {
 	    }
 	    
 	}
-	public NetworkInterface getDevices()
+	public NetworkInterface getDevices()//return the devices you chosen
 	{
 		return devices;
 	}
