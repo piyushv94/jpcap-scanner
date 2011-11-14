@@ -12,5 +12,5 @@ public:
 	myException(const string& _s){
 		info=_s;
 	}
-}
+};
 #endif

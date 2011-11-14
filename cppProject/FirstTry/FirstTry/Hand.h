@@ -1,5 +1,5 @@
-#ifndef _Hand
-#define _Hand
+#ifndef _myHand
+#define _myHand
 #include<iostream>
 #include<vector>
 #include<algorithm>
@@ -8,11 +8,7 @@ using std::vector;
 using std::ostream;
 template <class C>class Hand{
 	vector<C> cards;
-	friend ostream& operator<<(ostream &_os,const Hand& _h);
-	ostream& operator<<(ostream &_os,const Hand& _h){
-		for(int i=0;i<5;i++)
-			_os<<cards[i]<<" ";
-	}
+	friend ostream& operator<<(ostream &_os,const Hand<C>& _h);
 public:
 	/*Hand<C>& operator+=(const C& carte): adds a card to the hand. Throws an exception of type handful if the hand is already full.
 C& operator[](int index): returns a reference to a card from the players hand.
@@ -40,5 +36,9 @@ void exchangeCards(Deck& jeu): Exchanges all the cards in the hand with new card
 		}
 		cards=temp;
 	}
-}
+};
+template<class C>ostream& operator<<(ostream &_os,const Hand<C>& _h){
+		for(int i=0;i<5;i++)
+			_os<<_h.cards[i]<<" ";
+	}
 #endif
