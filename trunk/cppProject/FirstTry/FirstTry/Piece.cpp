@@ -1,6 +1,12 @@
 #include"Piece.h"
 
-ostream& operator<<(ostream& _os ,const Piece & piece){
-	_os<<"Piece";
+
+
+ostream& Piece::print(ostream& _os) const{
+	_os<<"piece";
 	return _os;
+}
+
+ostream& operator<<(ostream& _os,Piece& piece){
+	return piece.print(_os);
 }

@@ -1,6 +1,11 @@
 #include "Tower.h"
 
-ostream& operator<<(ostream& _os ,const Tower & tower){
+
+ostream& Tower::print(ostream& _os) const{
 	_os<<"Tower";
 	return _os;
+}
+
+ostream& operator<<(ostream& _os,Tower& piece){
+	return piece.print(_os);
 }
