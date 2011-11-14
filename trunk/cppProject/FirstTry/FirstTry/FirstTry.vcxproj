@@ -76,6 +76,7 @@
   <ItemGroup>
     <ClInclude Include="Card.h" />
     <ClInclude Include="Deck.h" />
+    <ClInclude Include="Gameboard.h" />
     <ClInclude Include="Hand.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="myException.h" />
@@ -86,6 +87,7 @@
   <ItemGroup>
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Deck.cpp" />
+    <ClCompile Include="Gameboard.cpp" />
     <ClCompile Include="Piece.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
