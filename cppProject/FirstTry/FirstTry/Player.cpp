@@ -27,3 +27,27 @@ char Player::getInitial(char x) const{
 Hand<Card>& Player::getHand(){
 	return myHand;
 }
+Piece& Player::removePiece(){
+	if(countPiece==0)
+		throw myException("no piece");
+	countPiece--;
+	return *myPiece;
+}
+void Player::addPiece(){
+	countPiece++;
+}
+int Player::increaseBlocks( int i ){
+	Blocks+=i;
+	return Blocks;
+}
+bool Player::decreaseBlocks( int i ){
+	bool res=true;
+	if(Blocks-i<0)
+		res=false;
+	else
+		Blocks-=i;
+	return res;
+}
+int Player::increasePoints( int i ){
+	return point+=i;
+}

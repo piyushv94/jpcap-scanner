@@ -11,7 +11,11 @@ using std::string;
 
 class Player{
 	string Name;
-	Hand myHand;
+	Hand<Card> myHand;
+	Piece *myPiece;
+	int Blocks;
+	int point;
+	int countPiece;
 	friend ostream& operator<<(ostream&,const Player &);
 public:
 	string getName() const;
