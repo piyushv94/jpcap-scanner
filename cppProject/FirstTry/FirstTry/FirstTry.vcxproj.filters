@@ -39,6 +39,9 @@
     <ClInclude Include="myException.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Gameboard.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -57,6 +60,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Gameboard.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
