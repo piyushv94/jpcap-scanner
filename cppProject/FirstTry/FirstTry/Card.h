@@ -1,3 +1,5 @@
+#ifndef _Card
+#define _Card
 
 #include <iostream>
 #include <string>
@@ -18,3 +20,4 @@ public:
 	double getDistance();
 	
 };
+#endif

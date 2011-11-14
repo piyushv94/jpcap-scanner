@@ -1,6 +1,13 @@
-#include "Piece.h"
+#ifndef _Tower
+#define _Tower
+
+#include "Item.h"
+
 
 class Tower:public Item{
 public:
-	friend ostream& operator<<(ostream& ,const Tower &);
+	ostream& print(ostream&) const ;
+	friend ostream& operator<<(ostream& ,Tower &);
 };
+
+#endif

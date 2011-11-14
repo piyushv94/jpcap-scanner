@@ -21,5 +21,5 @@ public:
 	Deck<C>& operator+=(C carte){
 		cards.push_back(carte);
 	}
-}
+};
 #endif
