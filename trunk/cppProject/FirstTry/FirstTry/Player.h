@@ -26,5 +26,5 @@ public:
 	int increaseBlocks( int i );
 	bool decreaseBlocks( int i );
 	int increasePoints( int i );
-}
+};
 #endif
