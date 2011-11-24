@@ -2,14 +2,9 @@
 #include"Item.h"
 #include"Piece.h"
 #include"Tower.h"
+#include"Game.h"
 int main(){
-	Card c=Card(EAST,1);
-	c.unitTest();
-	Item i;
-	i.unitTest();
-	Piece p=Piece('A');
-	p.unitTest();
-	Tower t=Tower(c);
-	t.unitTest();
+	Game g;
+	g.runGame();
 	return 0;
 }

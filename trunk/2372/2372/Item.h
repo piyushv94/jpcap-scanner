@@ -3,10 +3,11 @@
 #include<iostream>
 using std::ostream;
 class Item{
-	int x;
-	int y;
+	
 	friend ostream& operator<<(ostream &_os,const Item& _i);
 public:
+	int x;
+	int y;
 	Item(int _x=0,int _y=0);
 	int getX()const;
 	int getY()const;

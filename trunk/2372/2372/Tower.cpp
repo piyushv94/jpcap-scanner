@@ -1,14 +1,19 @@
 #include"Tower.h"
 #include<iostream>
 using std::ostream;
-Tower::Tower(int val){
+Tower::Tower(int val,int _x,int _y){
 	numBlocks=val;
+	x=_x;
+	y=_y;
 };
 Tower::Tower(const Card& carte){
 	numBlocks=carte.getDistance();
 };
 ostream& Tower::printOut(ostream& os,const Item& i) const{
+	if(((Tower)*this).numBlocks!=0)
 	os<<((Tower)*this).numBlocks;
+	else
+		os<<'.';
 	return os;
 };
 int Tower::getBlocks() const{

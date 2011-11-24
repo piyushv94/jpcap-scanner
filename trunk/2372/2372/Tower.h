@@ -7,7 +7,7 @@ using std::ostream;
 class Tower:public Item{
 	int numBlocks;
 public:
-	Tower(int val=0);
+	Tower(int val=0,int x=0,int y=0);
 	Tower(const Card& carte);
 	int getBlocks() const;
 	ostream& printOut(ostream& os,const Item& i) const;

@@ -13,6 +13,18 @@ A player must also be printable with the insertion operator cout << hand; (see a
 #include"myException.h"
 #include<string>
 using std::string;
+Player::Player(string &s){
+	Name=s;
+	Blocks=0;
+	point=0;
+	countPiece=0;
+}
+Player::Player(){
+	Name=" ";
+	Blocks=0;
+	point=0;
+	countPiece=0;
+}
 string Player::getName() const{
 	return Name;
 }
@@ -31,6 +43,7 @@ Piece& Player::removePiece(){
 	if(countPiece==0)
 		throw myException("no piece");
 	countPiece--;
+	myPiece=new Piece(getInitial('X'));
 	return *myPiece;
 }
 void Player::addPiece(){
@@ -52,6 +65,13 @@ int Player::increasePoints( int i ){
 	return point+=i;
 }
 ostream& operator<<(ostream& os,const Player &p){
-	os<<"Player "<<p.getInitial('X')<<": "<<p.point<<" pts";
+	os<<"       Player "<<p.getInitial('X')<<": "<<p.point<<" pts"<<std::endl;
+	os<<"Blocks: "<<p.Blocks;
+	Hand<Card>temp=p.myHand;
+	os<<" Cards: "<<temp;
+	os<<" Piece: ";
+	for(int i=0;i<p.countPiece;i++)
+		os<<p.getInitial('X')<<" ";
+	os<<std::endl;
 	return os;
 }
