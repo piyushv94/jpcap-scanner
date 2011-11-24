@@ -4,6 +4,10 @@ Card::Card(const Direction& d,const int& dis){
 	direction=d;
 	distance=dis;
 };
+Card::Card(){
+	direction=WEST;
+	distance=0;
+};
 int Card::getDistance()const{
 	return distance;
 };

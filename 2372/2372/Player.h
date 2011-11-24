@@ -11,13 +11,15 @@ using std::string;
 
 class Player{
 	string Name;
-	Hand<Card> myHand;
 	Piece *myPiece;
 	int Blocks;
 	int point;
 	int countPiece;
 	friend ostream& operator<<(ostream&,const Player &);
 public:
+	Hand<Card> myHand;
+	Player(string&);
+	Player();
 	string getName() const;
 	char getInitial( char x ) const;
 	Hand<Card>& getHand();

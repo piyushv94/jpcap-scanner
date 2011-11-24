@@ -1,6 +1,9 @@
 #include"Piece.h"
 #include<iostream>
 using std::ostream;
+Piece::Piece(){
+	Name=' ';
+}
 Piece::Piece(const char& name){
 	Name=name;
 };

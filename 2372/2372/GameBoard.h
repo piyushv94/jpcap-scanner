@@ -10,11 +10,14 @@
 #include"Hand.h"
 #include"myException.h"
 class GameBoard{
-	Item myItem[9][9];
+	
 	Deck<Card> myDeck;
 	friend ostream& operator<<(ostream &_os,const GameBoard& _gb);
 public:
+	Item *myItem[9][9];
+	GameBoard(Deck<Card>&);
 	GameBoard();
+	GameBoard(Player &a,Player &b);
 	bool isValidMove(const Player& p, const Card& c, const BoardPosition& bp) const;
 	void move(Player& p, const Card& c, const BoardPosition& bp);
 	void buildTower(Player& p, const Card& c, const BoardPosition& bp,int phase);

@@ -78,6 +78,7 @@
     <ClInclude Include="BoardPosition.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="Deck.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="GameBoard.h" />
     <ClInclude Include="Hand.h" />
     <ClInclude Include="Item.h" />
@@ -87,7 +88,9 @@
     <ClInclude Include="Tower.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Action.cpp" />
     <ClCompile Include="Card.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameBoard.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />

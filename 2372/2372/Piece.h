@@ -5,6 +5,7 @@ class Piece:public Item{
 	char Name;
 public:
 	Piece(const char&);
+	Piece();
 	char getName() const;
 	ostream& printOut(ostream& os,const Item& i) const;
 	void unitTest();

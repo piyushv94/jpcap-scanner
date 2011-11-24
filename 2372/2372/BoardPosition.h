@@ -4,5 +4,5 @@ class BoardPosition{
 public:
 	int x;
 	int y;
-}
+};
 #endif
