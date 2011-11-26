@@ -149,8 +149,8 @@ void Game::runGame(){
 						plateau.myItem[bp.x-temp.distance][numPP-1]=new Piece(currentPlayer.getInitial('x'));
 						}
 						//c.distance++;
-						//currentPlayer.removePiece();
 						currentPlayer.removePiece();
+						//currentPlayer.removePiece();
 						}
 
 				}
@@ -306,6 +306,6 @@ void Game::runGame(){
 			cout<<t.toString()<<endl;
 				}
 } while(phase!=4); //(!endOfgame());
-//cout << "Phase: << phase << endl << endl << player[0] << plateau << player[1];
+cout << "Phase: "<< phase << endl << endl << player[0] << plateau << player[1];
 
 };
