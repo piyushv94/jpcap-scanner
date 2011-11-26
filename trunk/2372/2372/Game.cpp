@@ -194,32 +194,33 @@ void Game::runGame(){
 				c=h[numP-1];
 				std::cout<<"Choose a column(1-9):"<<std::endl;
 				std::cin>>numP;
-				if(turn%2==0){
-							bp.x=0;c.direction=SOUTH;}
-						else
-						{bp.x=8;c.direction=NORTH;}
 				bp.y=numP-1;
-				c.distance--;
-				if(plateau.isValidMove(currentPlayer, c, bp)){
+				Card temp=c;
+				temp.distance--;
+				if(turn%2==0){
+							bp.x=0;temp.direction=SOUTH;}
+						else
+						{bp.x=8;temp.direction=NORTH;}
+				if(plateau.isValidMove(currentPlayer, temp, bp)){
 					if(((Tower*)plateau.myItem[bp.x][bp.y])->getBlocks()==0){
 						//delete(plateau.myItem[bp.x][bp.y]);
 						}
 				else
 					throw myException("illegalAdd");
-					if(c.getDirection()==NORTH)
-					{bp.x-=c.getDistance();}
-					else if(c.getDirection()==SOUTH)
-					{bp.x+=c.getDistance();}
-					else if(c.getDirection()==WEST)
-					{bp.y-=c.getDistance();}
-					else if(c.getDirection()==EAST)
-					{bp.y+=c.getDistance();}
+					if(temp.getDirection()==NORTH)
+					{bp.x-=temp.getDistance();}
+					else if(temp.getDirection()==SOUTH)
+					{bp.x+=temp.getDistance();}
+					else if(temp.getDirection()==WEST)
+					{bp.y-=temp.getDistance();}
+					else if(temp.getDirection()==EAST)
+					{bp.y+=temp.getDistance();}
 					delete(plateau.myItem[bp.x][bp.y]);
 					plateau.myItem[bp.x][bp.y]=new (Piece)(currentPlayer.removePiece());}
 				else{
-					c.distance++;
+					//c.distance++;
 					throw myException("illegalAdd");}
-				c.distance++;
+				//c.distance++;
 				int i=0;
 				for(i=0;i<5;i++)
 					if(h[i].getDirection()==c.getDirection() && h[i].getDistance()==c.getDistance())
@@ -304,14 +305,7 @@ void Game::runGame(){
 				// the player must select another action.
 			cout<<t.toString()<<endl;
 				}
-		bool t=false;
-					for(int i=0;i<9;++i){
-						for(int j=0;j<9;++j)
-							if(((Tower*)plateau.myItem[i][j])->getBlocks()!=4)
-							{t=true;break;}
-							if (t)break;
-					}
-} while(1); //(!endOfgame());
+} while(phase!=4); //(!endOfgame());
 //cout << "Phase: << phase << endl << endl << player[0] << plateau << player[1];
 
 };
