@@ -17,7 +17,6 @@ GameBoard::GameBoard(Deck<Card>& temp){
 	myItem[7][2]=new Tower(2);myItem[7][5]=new Tower(1);
 	myItem[8][0]=new Tower(3);myItem[8][3]=new Tower(1);myItem[8][8]=new Tower(3);
 	//bebug
-	
 };GameBoard::GameBoard(){
 	myDeck=Deck<Card>();
 	for(int i=0;i<9;i++)
@@ -218,12 +217,14 @@ GameBoard::GameBoard(Player &a,Player &b){
 		}
 	};
 	void GameBoard::knockOffPiece(Player& p, const Card& c, const BoardPosition& bp){
-		if(!isValidMove(p,c,bp))
+		Card temp=c;
+		temp.distance--;
+		if(!isValidMove(p,temp,bp))
 			throw myException("illegalKnockOff");
 		else{
 				int x=bp.x;
 				int y=bp.y;
-				if(c.getDirection()==NORTH)
+ 				if(c.getDirection()==NORTH)
 				{x-=c.getDistance();}
 				else if(c.getDirection()==SOUTH)
 				{x+=c.getDistance();}
@@ -231,7 +232,9 @@ GameBoard::GameBoard(Player &a,Player &b){
 				{y-=c.getDistance();}
 				else if(c.getDirection()==EAST)
 				{y+=c.getDistance();}
-				if((((Piece*)(&myItem[x][y]))->getName()==p.getInitial('x'))){
+				if((((Piece*)(myItem[x][y]))->getName()==p.getInitial('x'))){
+					throw myException("illegalKnockOff");}
+				if((((Tower*)(myItem[x][y]))->getBlocks()>=0)){
 					throw myException("illegalKnockOff");}
 				myItem[bp.x][bp.y]=new Tower(0);
 				myItem[x][y]=new Piece(p.getInitial('x'));

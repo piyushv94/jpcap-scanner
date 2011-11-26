@@ -131,6 +131,8 @@ void Game::runGame(){
 						else
 						{bp.x=8;temp.direction=NORTH;}
 						pay = askHowToPay( currentPlayer );
+						if(pay.direction==c.direction&&pay.distance==c.distance)
+							throw myException("illegalDemolish");
 						plateau.demolishTower(currentPlayer, temp, pay, bp,phase);
 						if(turn%2==0)
 						{
