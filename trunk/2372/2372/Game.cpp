@@ -116,6 +116,10 @@ void Game::runGame(){
 						for(int i=0;i<5;i++)
 							cout<<i+1<<": "<<h[i]<<endl;
 						std::cin>>numP;
+						if(turn%2==0){
+							bp.x=0;c.direction=SOUTH;}
+						else
+						{bp.x=8;c.direction=NORTH;}
 						c=h[numP-1];
 						if(((Tower*)plateau.myItem[bp.x][bp.y])->getBlocks()>=0){
 							if(((Tower*)plateau.myItem[bp.x][bp.y])->getBlocks()!=0&&c.getDistance()!=1)
