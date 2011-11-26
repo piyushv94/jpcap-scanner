@@ -38,7 +38,7 @@ void Game::runGame(){
 		std::cout<< "             Phase: "<< phase << endl << endl << player[0] << plateau << player[1];
 		Player& currentPlayer = player[turn%2];
 		//ask player what move to make
-		cout<<"Player "<<currentPlayer.getName()<<endl;
+		cout<<"Player "<<currentPlayer.getName();
 		BoardPosition bp;
 		Card &c=Card();
 		Action a = askPlayer(currentPlayer,bp,c);
@@ -47,7 +47,7 @@ void Game::runGame(){
 		switch (a) {
 			case EXCHANGE:
 				h.exchangeCards(deck);
-				std::cout<< "             Phase: "<< phase << endl << endl << player[0] << plateau << player[1];
+				//std::cout<< "             Phase: "<< phase << endl << endl << player[0] << plateau << player[1];
 				break;
 			case BUILD:
 				{
@@ -191,14 +191,26 @@ void Game::runGame(){
 				bp.x=0;
 				else bp.x=8;
 				bp.y=numP-1;
-				if(((Tower*)plateau.myItem[bp.x][bp.y])->getBlocks()==0){
-					delete(plateau.myItem[bp.x][bp.y]);
-				plateau.myItem[bp.x][bp.y]=new (Piece)(currentPlayer.removePiece());
 				c.distance--;
-				plateau.move(currentPlayer, c, bp);
-				}
+				if(plateau.isValidMove(currentPlayer, c, bp)){
+					if(((Tower*)plateau.myItem[bp.x][bp.y])->getBlocks()==0){
+						//delete(plateau.myItem[bp.x][bp.y]);
+						}
 				else
 					throw myException("illegalAdd");
+					if(c.getDirection()==NORTH)
+					{bp.x-=c.getDistance();}
+					else if(c.getDirection()==SOUTH)
+					{bp.x+=c.getDistance();}
+					else if(c.getDirection()==WEST)
+					{bp.y-=c.getDistance();}
+					else if(c.getDirection()==EAST)
+					{bp.y+=c.getDistance();}
+					delete(plateau.myItem[bp.x][bp.y]);
+					plateau.myItem[bp.x][bp.y]=new (Piece)(currentPlayer.removePiece());}
+				else{
+					c.distance++;
+					throw myException("illegalAdd");}
 				c.distance++;
 				int i=0;
 				for(i=0;i<5;i++)
@@ -266,6 +278,7 @@ void Game::runGame(){
 					cout<<i+1<<": "<<h[i]<<endl;
 				std::cin>>numP;
 				c=h[numP-1];
+				if(plateau.isValidMove(currentPlayer,c,bp))
 				plateau.move(currentPlayer, c, bp);
 				int i;
 				for(i=0;i<5;i++)

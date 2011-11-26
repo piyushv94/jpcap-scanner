@@ -59,7 +59,7 @@ GameBoard::GameBoard(Player &a,Player &b){
 		int dis=c.getDistance();
 		switch(d){
 			case WEST:
-				for(int i=1;i<dis;i++)
+				for(int i=1;i<=dis;i++)
 				{
 					if(y-i<=0){
 						res=false;
@@ -74,7 +74,7 @@ GameBoard::GameBoard(Player &a,Player &b){
 				}
 				break;
 			case EAST:
-				for(int i=1;i<dis;i++)
+				for(int i=1;i<=dis;i++)
 				{
 					if(bp.y+i>8){
 						res=false;
@@ -90,7 +90,7 @@ GameBoard::GameBoard(Player &a,Player &b){
 				}
 				break;
 				case NORTH:
-				for(int i=1;i<dis;i++)
+				for(int i=1;i<=dis;i++)
 				{
 					if(x-i<=0){
 						res=false;
@@ -106,7 +106,7 @@ GameBoard::GameBoard(Player &a,Player &b){
 				}
 				break;
 				case SOUTH:
-				for(int i=1;i<dis;i++)
+				for(int i=1;i<=dis;i++)
 				{
 					if(x+i>8){
 						res=false;
