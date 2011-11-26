@@ -208,8 +208,9 @@ GameBoard::GameBoard(Player &a,Player &b){
 				delete(myItem[bp.x][bp.y]);
 				if(x!=bp.x&&y!=bp.y)
 				delete(myItem[x][y]);
-				myItem[x][y]=new Tower(0);
+				myItem[x][y]=new Piece(p.removePiece());
 				myItem[bp.x][bp.y]=new Tower(0);
+				p.addPiece();
 				//p.addPiece();
 				}
 				else
