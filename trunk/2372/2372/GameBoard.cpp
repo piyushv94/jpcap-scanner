@@ -183,7 +183,9 @@ GameBoard::GameBoard(Player &a,Player &b){
 		/*pays with the action card pay for a tower to be demolished when moving a piece to the board position bp. 
 		It will throw an exception illegalDemolish if the tower cannot be demolished (invalid). 
 		It must update a Player because of the demolishing of the tower.*/
-		if(!isValidMove(p,c,bp))
+		Card temp=c;
+		temp.distance--;
+		if(!isValidMove(p,temp,bp))
 			throw myException("illegalDemolish");
 		if(p.increaseBlocks(0)>=7)
 			throw myException("illegalDemolish");
