@@ -121,31 +121,32 @@ void Game::runGame(){
 						else
 						{bp.x=8;c.direction=NORTH;}
 						c=h[numP-1];
+						Card temp=c;
 						if(((Tower*)plateau.myItem[bp.x][bp.y])->getBlocks()>=0){
 							if(((Tower*)plateau.myItem[bp.x][bp.y])->getBlocks()!=0&&c.getDistance()!=1)
 								throw myException("illegalDemolish");
-						c.distance--;
+						temp.distance--;
 						if(turn%2==0){
-							bp.x=0;c.direction=SOUTH;}
+							bp.x=0;temp.direction=SOUTH;}
 						else
-						{bp.x=8;c.direction=NORTH;}
+						{bp.x=8;temp.direction=NORTH;}
 						pay = askHowToPay( currentPlayer );
-						plateau.demolishTower(currentPlayer, c, pay, bp,phase);
+						plateau.demolishTower(currentPlayer, temp, pay, bp,phase);
 						if(turn%2==0)
 						{
 						delete(plateau.myItem[0][numPP-1]);
 						plateau.myItem[0][numPP-1]=new Tower(0);
-						delete(plateau.myItem[bp.x+c.distance][numPP-1]);
-						plateau.myItem[bp.x+c.distance][numPP-1]=new Piece(currentPlayer.getInitial('x'));
+						delete(plateau.myItem[bp.x+temp.distance][numPP-1]);
+						plateau.myItem[bp.x+temp.distance][numPP-1]=new Piece(currentPlayer.getInitial('x'));
 						}
 						else
 						{
 						delete(plateau.myItem[8][numPP-1]);
 						plateau.myItem[8][numPP-1]=new Tower(0);
-						delete(plateau.myItem[bp.x-c.distance][numPP-1]);
-						plateau.myItem[bp.x-c.distance][numPP-1]=new Piece(currentPlayer.getInitial('x'));
+						delete(plateau.myItem[bp.x-temp.distance][numPP-1]);
+						plateau.myItem[bp.x-temp.distance][numPP-1]=new Piece(currentPlayer.getInitial('x'));
 						}
-						c.distance++;
+						//c.distance++;
 						currentPlayer.removePiece();
 						currentPlayer.removePiece();
 						}
