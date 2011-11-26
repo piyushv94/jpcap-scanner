@@ -59,79 +59,66 @@ GameBoard::GameBoard(Player &a,Player &b){
 		int dis=c.getDistance();
 		switch(d){
 			case WEST:
-				for(int i=0;i<dis;i++)
+				for(int i=1;i<dis;i++)
 				{
 					if(y-i<=0){
 						res=false;
 						break;
 					}
-					if((typeid (myItem[x][y-i])== typeid(Tower))&&
-						(((Tower*)(&myItem[x][y-i]))->getBlocks()!=0)){
-						res=false;
-						break;
-					}
-					if((typeid (myItem[x][y-i])== typeid(Piece))&&
-						(((Piece*)(&myItem[x][y-i]))->getName()!=p.getInitial(' '))){
-						res=false;
-						break;
+					if((((Tower*)(myItem[x][y-i]))->getBlocks()!=0)){
+						if((((Piece*)(myItem[x][y-i]))->getName()!=p.getInitial(' '))){
+							res=false;
+							break;
+						}
 					}
 				}
 				break;
 			case EAST:
-				for(int i=0;i<dis;i++)
+				for(int i=1;i<dis;i++)
 				{
 					if(bp.y+i>8){
 						res=false;
 						break;
 					}
-					if((typeid (myItem[x][y+i])== typeid(Tower))&&
-						(((Tower*)(&myItem[x][y+i]))->getBlocks()!=0)){
+					if((((Tower*)(myItem[x][y+i]))->getBlocks()!=0)){
+						if((((Piece*)(myItem[x][y+i]))->getName()!=p.getInitial(' '))){
 						res=false;
 						break;
 					}
-					if((typeid (myItem[x][y+i])== typeid(Piece))&&
-						(((Piece*)(&myItem[x][y+i]))->getName()!=p.getInitial(' '))){
-						res=false;
-						break;
 					}
+					
 				}
 				break;
 				case NORTH:
-				for(int i=0;i<dis;i++)
+				for(int i=1;i<dis;i++)
 				{
 					if(x-i<=0){
 						res=false;
 						break;
 					}
-					if((typeid (myItem[x-i][y])== typeid(Tower))&&
-						(((Tower*)(&myItem[x-i][y]))->getBlocks()!=0)){
+					if((((Tower*)(myItem[x-i][y]))->getBlocks()!=0)){
+						if((((Piece*)(myItem[x-i][y]))->getName()!=p.getInitial(' '))){
 						res=false;
 						break;
 					}
-					if((typeid (myItem[x-i][y])== typeid(Piece))&&
-						(((Piece*)(&myItem[x-i][y]))->getName()!=p.getInitial(' '))){
-						res=false;
-						break;
 					}
+					
 				}
 				break;
 				case SOUTH:
-				for(int i=0;i<dis;i++)
+				for(int i=1;i<dis;i++)
 				{
 					if(x+i>8){
 						res=false;
 						break;
 					}
-					if((typeid (myItem[x+i][y])== typeid(Tower))&&
-						(((Tower*)(&myItem[x+i][y]))->getBlocks()!=0)){
+					if((((Tower*)(myItem[x+i][y]))->getBlocks()!=0)){
+						if((((Piece*)(myItem[x+i][y]))->getName()!=p.getInitial(' '))){
 						res=false;
 						break;
 					}
-					if((typeid (myItem[x+i][y])== typeid(Piece))&&
-						(((Piece*)(&myItem[x+i][y]))->getName()!=p.getInitial(' '))){
-						res=false;
-						break;
 					}
+					
 				}
 				break;
 		}
@@ -150,10 +137,11 @@ GameBoard::GameBoard(Player &a,Player &b){
 			{y-=c.getDistance();}
 			else if(c.getDirection()==EAST)
 			{y+=c.getDistance();}
-			if((((Tower*)(myItem[x][y]))->getBlocks()!=0))
+			if((((Tower*)(myItem[x][y]))->getBlocks()!=0)&&(x!=bp.x&&y!=bp.y))
 						throw myException("illegalMove");
+			if(bp.x!=x||bp.y!=y){
 			myItem[x][y]=myItem[bp.x][bp.y];
-			myItem[bp.x][bp.y]=new Tower(0);
+			myItem[bp.x][bp.y]=new Tower(0);}
 		}
 		else
 			throw myException("illegalMove");

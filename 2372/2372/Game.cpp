@@ -187,16 +187,25 @@ void Game::runGame(){
 				c=h[numP-1];
 				std::cout<<"Choose a column(1-9):"<<std::endl;
 				std::cin>>numP;
+				if(turn%2==0)
 				bp.x=0;
+				else bp.x=8;
 				bp.y=numP-1;
 				if(((Tower*)plateau.myItem[bp.x][bp.y])->getBlocks()==0){
 					delete(plateau.myItem[bp.x][bp.y]);
-				*(plateau.myItem[bp.x,bp.y])=new (Piece)(currentPlayer.removePiece());
+				plateau.myItem[bp.x][bp.y]=new (Piece)(currentPlayer.removePiece());
 				c.distance--;
 				plateau.move(currentPlayer, c, bp);
 				}
 				else
 					throw myException("illegalAdd");
+				c.distance++;
+				int i=0;
+				for(i=0;i<5;i++)
+					if(h[i].getDirection()==c.getDirection() && h[i].getDistance()==c.getDistance())
+						break;
+				deck+=h.play(i);
+				h+=deck.draw();
 				break;
 				}
 			case KNOCKOFF:
@@ -268,10 +277,11 @@ void Game::runGame(){
 		}
 		turn++; 
 		}
-		catch (myException){
+		catch (myException t){
 				// display a message explaining why the proposed 
 				// action is invalid.
 				// the player must select another action.
+			cout<<t.toString()<<endl;
 				}
 
 } while(1); //(!endOfgame());
