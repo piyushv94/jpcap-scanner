@@ -123,7 +123,7 @@ void Game::runGame(){
 						c=h[numP-1];
 						Card temp=c;
 						if(((Tower*)plateau.myItem[bp.x][bp.y])->getBlocks()>=0){
-							if(((Tower*)plateau.myItem[bp.x][bp.y])->getBlocks()!=0&&c.getDistance()!=1)
+							if((((Tower*)plateau.myItem[bp.x][bp.y])->getBlocks()!=0&&c.getDistance()!=1)||((Piece*)plateau.myItem[bp.x][bp.y])->getName()==currentPlayer.getInitial(' '))
 								throw myException("illegalDemolish");
 						temp.distance--;
 						if(turn%2==0){
@@ -153,6 +153,7 @@ void Game::runGame(){
 						//currentPlayer.removePiece();
 						}
 
+						else throw myException("illegalDemolish");
 				}
 				else
 				{bp.x=tempP[numP-1].getX();bp.y=tempP[numP-1].getY();
