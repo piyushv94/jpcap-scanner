@@ -149,7 +149,7 @@ void Game::runGame(){
 						plateau.myItem[bp.x-temp.distance][numPP-1]=new Piece(currentPlayer.getInitial('x'));
 						}
 						//c.distance++;
-						currentPlayer.removePiece();
+						//currentPlayer.removePiece();
 						currentPlayer.removePiece();
 						}
 

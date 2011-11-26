@@ -210,7 +210,7 @@ GameBoard::GameBoard(Player &a,Player &b){
 				delete(myItem[x][y]);
 				myItem[x][y]=new Tower(0);
 				myItem[bp.x][bp.y]=new Tower(0);
-				p.addPiece();
+				//p.addPiece();
 				}
 				else
 					throw myException("illegalDemolish");
