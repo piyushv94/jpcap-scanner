@@ -304,7 +304,13 @@ void Game::runGame(){
 				// the player must select another action.
 			cout<<t.toString()<<endl;
 				}
-
+		bool t=false;
+					for(int i=0;i<9;++i){
+						for(int j=0;j<9;++j)
+							if(((Tower*)plateau.myItem[i][j])->getBlocks()!=4)
+							{t=true;break;}
+							if (t)break;
+					}
 } while(1); //(!endOfgame());
 //cout << "Phase: << phase << endl << endl << player[0] << plateau << player[1];
 
