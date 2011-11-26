@@ -110,10 +110,6 @@ void Game::runGame(){
 				{
 					cout<<"choose a colum:"<<endl;
 						std::cin>>numPP;
-						if(turn%2==0)
-						bp.x=0;
-						else
-							bp.x=8;
 						bp.y=numPP-1;
 						//delete(plateau.myItem[0][numPP-1]);
 						std::cout<<"Choose a card:"<<std::endl;
@@ -125,6 +121,10 @@ void Game::runGame(){
 							if(((Tower*)plateau.myItem[bp.x][bp.y])->getBlocks()!=0&&c.getDistance()!=1)
 								throw myException("illegalDemolish");
 						c.distance--;
+						if(turn%2==0){
+							bp.x=0;c.direction=SOUTH;}
+						else
+						{bp.x=8;c.direction=NORTH;}
 						pay = askHowToPay( currentPlayer );
 						plateau.demolishTower(currentPlayer, c, pay, bp,phase);
 						if(turn%2==0)
@@ -187,9 +187,10 @@ void Game::runGame(){
 				c=h[numP-1];
 				std::cout<<"Choose a column(1-9):"<<std::endl;
 				std::cin>>numP;
-				if(turn%2==0)
-				bp.x=0;
-				else bp.x=8;
+				if(turn%2==0){
+							bp.x=0;c.direction=SOUTH;}
+						else
+						{bp.x=8;c.direction=NORTH;}
 				bp.y=numP-1;
 				c.distance--;
 				if(plateau.isValidMove(currentPlayer, c, bp)){
